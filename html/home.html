@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastNotes</title>
+
+    <link rel="stylesheet" href="/Trabalho/css/home.css">
+</head>
+
+<body>
+    <header class="d-flex justify-content-between p-3 bg-primary text-white" style="margin-bottom: 1vw;">
+        <h1 class="m-0" onclick="backHome()">FastNotes</h1>
+        <span id="userName"></span>
+        <div class="logout-btn">
+            <svg onclick="logOut()" id="logoutIcon" xmlns="http://www.w3.org/2000/svg" width="5vw" height="5vw"
+                viewBox="0 0 24 24" fill="currentColor" style=" cursor: pointer;">
+                <path d="M3 3h10a1 1 0 0 1 1 1v4h-2V5H5v14h7v-3h2v4a1 1 0 0 1-1 1H3z" />
+                <path d="M14 12l-3-3v2H7v2h4v2z" />
+                <path d="M11 11h10v2H11z" />
+            </svg>
+        </div>
+    </header>
+
+    <div style="margin: 2vw;">
+        <div id="mainView" class="cards"></div>
+
+        <div id="editor" class="editor" style="display:none;">
+            <input id="title" class="form-control mb-2" placeholder="Título da nota">
+            <div id="note" contenteditable="true" class="note" placeholder="Digite sua nota aqui..."></div>
+            <div class="editor-actions" style="margin-top: 12px; display:flex; gap:10px;">
+                <button class="btn btn-primary" onclick="closeEditor()">Salvar e fechar</button>
+                <button class="btn btn-secondary" onclick="render(); document.getElementById('editor').style.display='none'; document.getElementById('mainView').style.display='grid';">Cancelar</button>
+            </div>
+        </div>
+
+        <div class="fab">
+            <button class="fab-main" onclick="toggleFabMenu()" title="Mais ações">+</button>
+            <div class="fab-menu" id="fabMenu" style="display:none;">
+                <button type="button" onclick="createNote()">Novo bloco</button>
+                <button type="button" onclick="importNotes()">Importar</button>
+                <button type="button" onclick="addImage()">Imagem</button>
+            </div>
+        </div>
+
+        <input type="file" id="importInput" accept="application/json" style="display:none" onchange="handleImport(event)">
+        <input type="file" id="imageInput" accept="image/*" style="display:none" onchange="handleImage(event)">
+
+        <script src="/Trabalho/js/home.js"></script>
+
+    </div>
+</body>
+
+</html>
