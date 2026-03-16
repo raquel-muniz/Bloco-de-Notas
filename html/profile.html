@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <title>Perfil - FastNotes</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="/css/home.css" rel="stylesheet">
 </head>
+
 <body>
+    <header class="d-flex justify-content-between p-3 bg-primary text-white" style="margin-bottom: 1vw;">
+        <h1 class="m-0" onclick="backHome()">FastNotes</h1>
+        <span id="userName"></span>
+        <div class="logout-btn">
+            <svg onclick="logOut()" id="logoutIcon" xmlns="http://www.w3.org/2000/svg" width="5vw" height="5vw"
+                viewBox="0 0 24 24" fill="currentColor" style=" cursor: pointer;">
+                <path d="M3 3h10a1 1 0 0 1 1 1v4h-2V5H5v14h7v-3h2v4a1 1 0 0 1-1 1H3z" />
+                <path d="M14 12l-3-3v2H7v2h4v2z" />
+                <path d="M11 11h10v2H11z" />
+            </svg>
+        </div>
+    </header>
+  <img id="profileImage" width="100">
   <div class="profile-container">
     <h2>Perfil do Usuário</h2>
     <form id="profileForm">
@@ -14,8 +29,9 @@
       <input type="file" id="editFoto" />
       <button type="submit">Salvar</button>
     </form>
-    <p><a href="index.html">Voltar</a></p>
+    <p><a href="home.html">Voltar</a></p>
   </div>
-  <script src="js/user.js"></script>
+  <script src="/js/profile.js"></script>
 </body>
+
 </html>

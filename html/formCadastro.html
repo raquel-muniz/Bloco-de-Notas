@@ -2,332 +2,122 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro - FastNotes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #234B7F;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro - FastNotes</title>
 
-    .form-container {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      margin-top: 15vw;
-    }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    .mb-3 {
-      margin-bottom: 1rem !important
-    }
+<style>
 
-    .form-label {
-      margin-bottom: .5rem
-    }
-
-    .form-control {
-      display: block;
-      width: 100%;
-      padding: .375rem .75rem;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--bs-body-color);
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-color: var(--bs-body-bg);
-      background-clip: padding-box;
-      border: var(--bs-border-width) solid var(--bs-border-color);
-      border-radius: var(--bs-border-radius);
-      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
-    }
-
-
-    @media (prefers-reduced-motion:reduce) {
-      .form-control {
-        transition: none
-      }
-    }
-
-    .form-control[type=file] {
-      overflow: hidden
-    }
-
-    .form-control[type=file]:not(:disabled):not([readonly]) {
-      cursor: pointer
-    }
-
-    .form-control:focus {
-      color: var(--bs-body-color);
-      background-color: var(--bs-body-bg);
-      border-color: #86b7fe;
-      outline: 0;
-      box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
-    }
-
-    .form-control::-webkit-date-and-time-value {
-      min-width: 85px;
-      height: 1.5em;
-      margin: 0
-    }
-
-    .form-control::-webkit-datetime-edit {
-      display: block;
-      padding: 0
-    }
-
-    .form-control::-moz-placeholder {
-      color: var(--bs-secondary-color);
-      opacity: 1
-    }
-
-    .form-control::placeholder {
-      color: var(--bs-secondary-color);
-      opacity: 1
-    }
-
-    .form-control:disabled {
-      background-color: var(--bs-secondary-bg);
-      opacity: 1
-    }
-
-    .form-control::-webkit-file-upload-button {
-      padding: .375rem .75rem;
-      margin: -.375rem -.75rem;
-      -webkit-margin-end: .75rem;
-      margin-inline-end: .75rem;
-      color: var(--bs-body-color);
-      background-color: var(--bs-tertiary-bg);
-      pointer-events: none;
-      border-color: inherit;
-      border-style: solid;
-      border-width: 0;
-      border-inline-end-width: var(--bs-border-width);
-      border-radius: 0;
-      -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
-    }
-
-    .form-control::file-selector-button {
-      padding: .375rem .75rem;
-      margin: -.375rem -.75rem;
-      -webkit-margin-end: .75rem;
-      margin-inline-end: .75rem;
-      color: var(--bs-body-color);
-      background-color: var(--bs-tertiary-bg);
-      pointer-events: none;
-      border-color: inherit;
-      border-style: solid;
-      border-width: 0;
-      border-inline-end-width: var(--bs-border-width);
-      border-radius: 0;
-      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      .form-control::-webkit-file-upload-button {
-        -webkit-transition: none;
-        transition: none
-      }
-
-      .form-control::file-selector-button {
-        transition: none
-      }
-    }
-
-    .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-      background-color: var(--bs-secondary-bg)
-    }
-
-    .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
-      background-color: var(--bs-secondary-bg)
-    }
-
-    .form-control-plaintext {
-      display: block;
-      width: 100%;
-      padding: .375rem 0;
-      margin-bottom: 0;
-      line-height: 1.5;
-      color: var(--bs-body-color);
-      background-color: transparent;
-      border: solid transparent;
-      border-width: var(--bs-border-width) 0
-    }
-
-    .form-control-plaintext:focus {
-      outline: 0
-    }
-
-    .form-control-plaintext.form-control-lg,
-    .form-control-plaintext.form-control-sm {
-      padding-right: 0;
-      padding-left: 0
-    }
-
-    .form-control-sm {
-      min-height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2));
-      padding: .25rem .5rem;
-      font-size: .875rem;
-      border-radius: var(--bs-border-radius-sm)
-    }
-
-    .form-control-sm::-webkit-file-upload-button {
-      padding: .25rem .5rem;
-      margin: -.25rem -.5rem;
-      -webkit-margin-end: .5rem;
-      margin-inline-end: .5rem
-    }
-
-    .form-control-sm::file-selector-button {
-      padding: .25rem .5rem;
-      margin: -.25rem -.5rem;
-      -webkit-margin-end: .5rem;
-      margin-inline-end: .5rem
-    }
-
-    .form-control-lg {
-      min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
-      padding: .5rem 1rem;
-      font-size: 1.25rem;
-      border-radius: var(--bs-border-radius-lg)
-    }
-
-    .form-control-lg::-webkit-file-upload-button {
-      padding: .5rem 1rem;
-      margin: -.5rem -1rem;
-      -webkit-margin-end: 1rem;
-      margin-inline-end: 1rem
-    }
-
-    .form-control-lg::file-selector-button {
-      padding: .5rem 1rem;
-      margin: -.5rem -1rem;
-      -webkit-margin-end: 1rem;
-      margin-inline-end: 1rem
-    }
-
-    textarea.form-control {
-      min-height: calc(1.5em + .75rem + calc(var(--bs-border-width) * 2))
-    }
-
-    textarea.form-control-sm {
-      min-height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2))
-    }
-
-    textarea.form-control-lg {
-      min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2))
-    }
-
-    .form-control-color {
-      width: 3rem;
-      height: calc(1.5em + .75rem + calc(var(--bs-border-width) * 2));
-      padding: .375rem
-    }
-
-    .form-control-color:not(:disabled):not([readonly]) {
-      cursor: pointer
-    }
-
-    .form-control-color::-moz-color-swatch {
-      border: 0 !important;
-      border-radius: var(--bs-border-radius)
-    }
-
-    .form-control-color::-webkit-color-swatch {
-      border: 0 !important;
-      border-radius: var(--bs-border-radius)
-    }
-
-    .form-control-color.form-control-sm {
-      height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2))
-    }
-
-    .form-control-color.form-control-lg {
-      height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2))
-    }
-
-    .btn-check {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none
+body{
+background-color:#234B7F;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 }
 
-.btn-check:disabled+.btn,
-.btn-check[disabled]+.btn {
-    pointer-events: none;
-    filter: none;
-    opacity: .65
+.form-container{
+background:#fff;
+padding:2rem;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+width:100%;
+max-width:400px;
 }
 
-
-.input-group .btn {
-    position: relative;
-    z-index: 2
-}
-
-.input-group .btn:focus {
-    z-index: 5
-}
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="form-container">
-    <h2 class="text-center">Criar Conta no FastNotes</h2>
-    <form id="cadastroForm">
-      <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="senha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="senha" required>
-      </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-success">Cadastrar</button>
-      </div>
-    </form>
-    <p class="text-center mt-3">Já tem conta? <a href="formLogin.html">Entrar</a></p>
-  </div>
 
-  <script>
-    document.getElementById('cadastroForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+<div class="form-container">
 
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const senha = document.getElementById('senha').value;
+<h2 class="text-center mb-4">Criar Conta no FastNotes</h2>
 
-      // Cria o objeto do usuário
-      const usuario = {
-        nome: nome,
-        email: email,
-        senha: senha,
-        imagem: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(nome)
-      };
+<form id="cadastroForm">
 
-      // Salva no localStorage
-      localStorage.setItem('currentUser', JSON.stringify(usuario));
+<div class="mb-3">
+<label class="form-label">Nome</label>
+<input type="text" class="form-control" id="nome" required>
+</div>
 
-      // Redireciona para a home
-      window.location.href = "home.html";
-    });
-  </script>
+<div class="mb-3">
+<label class="form-label">E-mail</label>
+<input type="email" class="form-control" id="email" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Senha</label>
+<input type="password" class="form-control" id="senha" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Confirmar Senha</label>
+<input type="password" class="form-control" id="confirmarSenha" required>
+</div>
+
+<div class="d-grid">
+<button class="btn btn-success">Cadastrar</button>
+</div>
+
+</form>
+
+<p class="text-center mt-3">
+Já tem conta? <a href="formLogin.html">Entrar</a>
+</p>
+
+</div>
+
+<script>
+
+document.getElementById("cadastroForm").addEventListener("submit", function(e){
+
+e.preventDefault()
+
+const nome = document.getElementById("nome").value.trim()
+const email = document.getElementById("email").value.trim()
+const senha = document.getElementById("senha").value
+const confirmar = document.getElementById("confirmarSenha").value
+
+
+if(senha !== confirmar){
+alert("As senhas não coincidem!")
+return
+}
+
+
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
+
+
+const existe = usuarios.find(u => u.email === email)
+
+if(existe){
+alert("Este email já está cadastrado.")
+return
+}
+
+
+const usuario = {
+nome,
+email,
+senha,
+imagem: "https://ui-avatars.com/api/?name=" + encodeURIComponent(nome)
+}
+
+
+usuarios.push(usuario)
+
+localStorage.setItem("usuarios", JSON.stringify(usuarios))
+localStorage.setItem("currentUser", JSON.stringify(usuario))
+
+window.location.href="home.html"
+
+})
+
+</script>
+
 </body>
-
 </html>

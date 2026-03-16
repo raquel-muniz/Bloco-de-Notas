@@ -1,5 +1,8 @@
 const user = JSON.parse(localStorage.getItem("currentUser"));
 
+document.getElementById("userName").textContent = user.nome
+document.getElementById("userPhoto").src = user.imagem
+
 if (!user) {
   alert("Faça login primeiro");
   window.location.href = "formLogin.html";
